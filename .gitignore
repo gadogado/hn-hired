@@ -1,0 +1,5 @@
+node_modules
+idea.txt
+.env
+yarn-error.log
+claudia.json

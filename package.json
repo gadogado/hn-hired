@@ -1,0 +1,57 @@
+{
+  "name": "hn-hired",
+  "version": "1.0.0",
+  "description": "HN Hired",
+  "author": "Geoff Ereth <github@geoffereth.com> (https://github.com/gadogado)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "deploy": "claudia update --region us-west-1 --handler lambda.handler --deploy-proxy-api --profile claudia --memory 1280",
+    "prettier": "prettier --single-quote es6 --write '{components,lib,pages}/**js'",
+    "eslint": "eslint {components,lib,pages}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gadogado/hn-hired.git"
+  },
+  "dependencies": {
+    "@material-ui/core": "^1.3.0",
+    "@material-ui/icons": "^1.1.0",
+    "autosuggest-highlight": "^3.1.1",
+    "aws-serverless-express": "^3.2.0",
+    "axios": "^0.18.0",
+    "babel-eslint": "^8.2.5",
+    "babel-plugin-styled-components": "^1.5.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "cheerio": "^1.0.0-rc.2",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-react": "^1.1.7",
+    "express": "^4.16.3",
+    "fuse.js": "^3.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "next": "5.1.0",
+    "prop-types": "^15.0.0",
+    "react": "16.3.1",
+    "react-autosuggest": "^9.3.4",
+    "react-dom": "16.3.1",
+    "react-infinite-scroll-component": "^4.0.3",
+    "styled-components": "^3.3.3"
+  },
+  "resolutions": {
+    "eslint-scope": "3.7.1"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "claudia": "^5.0.0",
+    "eslint": "^5.1.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "prettier": "^1.13.7"
+  }
+}
