@@ -5,7 +5,9 @@
 </div>
 
 ---
-<strong>Serverless + Searchable HN Who's Hiring Posts</strong>
+[![Build Status](https://travis-ci.org/gadogado/hn-hired.svg?branch=master)](https://travis-ci.org/gadogado/hn-hired)
+
+**Serverless + Searchable HN Who's Hiring Posts**
 
 
 ### Features

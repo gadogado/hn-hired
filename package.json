@@ -10,7 +10,7 @@
     "start": "NODE_ENV=production node server.js",
     "deploy": "claudia update --region us-west-1 --handler lambda.handler --deploy-proxy-api --profile claudia --memory 1280",
     "prettier": "prettier --single-quote es6 --write '{components,lib,pages}/**js'",
-    "test": "eslint {components,lib,pages}"
+    "test": "eslint \\{components,lib,pages\\}/*.js"
   },
   "repository": {
     "type": "git",
