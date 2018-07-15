@@ -7,7 +7,6 @@ import Sidebar from '../components/Sidebar';
 import Loading from '../components/Loading';
 import SearchBar from '../components/SearchBar';
 import Fuse from 'fuse.js';
-import Config from '../lib/config.json';
 import { CssBaseline } from '@material-ui/core';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { blue } from '@material-ui/core/colors';
@@ -40,8 +39,6 @@ const sidebarCommentsStyle = {
   height: '100%'
 };
 
-const defaultDate = Object.keys(Config.urls)[0];
-
 class App extends Component {
   state = {
     trends: {},
@@ -49,7 +46,7 @@ class App extends Component {
     searchTokens: [],
     searchedComments: [],
     loading: true,
-    date: defaultDate
+    date: null
   };
 
   collector = async () => {
@@ -58,9 +55,9 @@ class App extends Component {
         ? '/latest/collector' // aws lambda path
         : '/collector';
 
-    const response = await fetch(`${url}?date=${this.state.date}`);
-    const { comments, trends } = await response.json();
-    return { comments, trends };
+    const response = await fetch(url);
+    const { comments, trends, date } = await response.json();
+    return { comments, trends, date };
   };
 
   searchComments = searchTokens => {
@@ -77,11 +74,12 @@ class App extends Component {
     /*
         Fetch hn hiring results from aws lambda, setState, and init Fuse.js
     */
-    this.collector().then(({ comments, trends }) =>
+    this.collector().then(({ comments, trends, date }) =>
       this.setState(
         {
           loading: false,
           searchedComments: comments,
+          date,
           comments,
           trends
         },
