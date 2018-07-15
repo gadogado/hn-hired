@@ -9,9 +9,8 @@ const handle = app.getRequestHandler();
 const createServer = () => {
   const server = express();
   server.get('/collector', async function (req, res) {
-    const { date } = req.query;
-    const { comments, commentTrends: trends } = await collector(date);
-    res.send({comments, trends});
+    const { comments, date, commentTrends: trends } = await collector();
+    res.send({comments, date, trends});
   })
   server.get('*', (req, res) => {
     handle(req, res)

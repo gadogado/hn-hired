@@ -67,29 +67,70 @@ module.exports =
 /******/ 	__webpack_require__.p = "/latestundefined";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
-/******/ ({
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
 
-/***/ "./components/Comments.js":
+module.exports = require("react");
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core");
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(4);
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__("prop-types");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_uuid_v4__ = __webpack_require__("uuid/v4");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_uuid_v4___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_uuid_v4__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_infinite_scroll_component__ = __webpack_require__("react-infinite-scroll-component");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_infinite_scroll_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_infinite_scroll_component__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ui_icons_Done__ = __webpack_require__("@material-ui/icons/Done");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ui_icons_Done___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__material_ui_icons_Done__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core__ = __webpack_require__("@material-ui/core");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__material_ui_core__);
-var _jsxFileName = '/Users/gereth/Projects/hn-hired/components/Comments.js';
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
+// EXTERNAL MODULE: external "babel-runtime/regenerator"
+var regenerator_ = __webpack_require__(5);
+var regenerator__default = /*#__PURE__*/__webpack_require__.n(regenerator_);
+
+// EXTERNAL MODULE: external "react"
+var external__react_ = __webpack_require__(0);
+var external__react__default = /*#__PURE__*/__webpack_require__.n(external__react_);
+
+// EXTERNAL MODULE: external "prop-types"
+var external__prop_types_ = __webpack_require__(2);
+var external__prop_types__default = /*#__PURE__*/__webpack_require__.n(external__prop_types_);
+
+// EXTERNAL MODULE: external "uuid/v4"
+var v4_ = __webpack_require__(6);
+var v4__default = /*#__PURE__*/__webpack_require__.n(v4_);
+
+// EXTERNAL MODULE: external "react-infinite-scroll-component"
+var external__react_infinite_scroll_component_ = __webpack_require__(7);
+var external__react_infinite_scroll_component__default = /*#__PURE__*/__webpack_require__.n(external__react_infinite_scroll_component_);
+
+// EXTERNAL MODULE: external "@material-ui/icons/Done"
+var Done_ = __webpack_require__(8);
+var Done__default = /*#__PURE__*/__webpack_require__.n(Done_);
+
+// EXTERNAL MODULE: external "@material-ui/core"
+var core_ = __webpack_require__(1);
+var core__default = /*#__PURE__*/__webpack_require__.n(core_);
+
+// CONCATENATED MODULE: ./components/Comments.js
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -119,7 +160,7 @@ var styles = function styles(theme) {
 
 var scrollChunk = 10;
 
-var Comments = function (_Component) {
+var Comments_Comments = function (_Component) {
   _inherits(Comments, _Component);
 
   function Comments() {
@@ -160,95 +201,46 @@ var Comments = function (_Component) {
       var classes = this.props.classes;
 
       var resultsList = results.map(function (comment) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_0_react__["Fragment"],
-          { key: __WEBPACK_IMPORTED_MODULE_2_uuid_v4___default()(), __source: {
-              fileName: _jsxFileName,
-              lineNumber: 68
-            }
-          },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            __WEBPACK_IMPORTED_MODULE_5__material_ui_core__["ListItem"],
-            {
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 69
-              }
-            },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              __WEBPACK_IMPORTED_MODULE_5__material_ui_core__["ListItemText"],
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 70
-                }
-              },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_5__material_ui_core__["Typography"],
-                { variant: 'body1', __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 71
-                  }
-                },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { dangerouslySetInnerHTML: { __html: comment.text }, __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 72
-                  }
-                })
+        return external__react__default.a.createElement(
+          external__react_["Fragment"],
+          { key: v4__default()() },
+          external__react__default.a.createElement(
+            core_["ListItem"],
+            null,
+            external__react__default.a.createElement(
+              core_["ListItemText"],
+              null,
+              external__react__default.a.createElement(
+                core_["Typography"],
+                { variant: 'body1' },
+                external__react__default.a.createElement('span', { dangerouslySetInnerHTML: { __html: comment.text } })
               )
             )
           ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__material_ui_core__["Divider"], {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 76
-            }
-          })
+          external__react__default.a.createElement(core_["Divider"], null)
         );
       });
 
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_5__material_ui_core__["List"],
-        { classes: classes, __source: {
-            fileName: _jsxFileName,
-            lineNumber: 81
-          }
-        },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_3_react_infinite_scroll_component___default.a,
+      return external__react__default.a.createElement(
+        core_["List"],
+        { classes: classes },
+        external__react__default.a.createElement(
+          external__react_infinite_scroll_component__default.a,
           {
             dataLength: results.length,
             next: this.next,
             hasMore: hasMore,
-            loader: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            loader: external__react__default.a.createElement(
               'h4',
-              {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 86
-                }
-              },
+              null,
               'Loading....'
             ),
             height: 1280,
-            endMessage: __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            endMessage: external__react__default.a.createElement(
               'p',
-              { style: { textAlign: 'center' }, __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 89
-                }
-              },
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__material_ui_icons_Done___default.a, {
-                __source: {
-                  fileName: _jsxFileName,
-                  lineNumber: 90
-                }
-              })
-            ),
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 82
-            }
+              { style: { textAlign: 'center' } },
+              external__react__default.a.createElement(Done__default.a, null)
+            )
           },
           resultsList
         )
@@ -279,169 +271,38 @@ var Comments = function (_Component) {
   }]);
 
   return Comments;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+}(external__react_["Component"]);
 
-Comments.propTypes = {
-  comments: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.array.isRequired,
-  classes: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object.isRequired
-};
+/* harmony default export */ var components_Comments = (Object(core_["withStyles"])(styles)(Comments_Comments));
+// EXTERNAL MODULE: external "next/head"
+var head_ = __webpack_require__(9);
+var head__default = /*#__PURE__*/__webpack_require__.n(head_);
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_5__material_ui_core__["withStyles"])(styles)(Comments));
-
-/***/ }),
-
-/***/ "./components/Github.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_SvgIcon__ = __webpack_require__("@material-ui/core/SvgIcon");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_SvgIcon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_SvgIcon__);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _jsxFileName = "/Users/gereth/Projects/hn-hired/components/Github.js";
-
-// from:  https://github.com/mui-org/material-ui/blob/fad1a78deed7cbf712b42bb5931b35fb2bcdbca4/docs/src/modules/components/Github.js#L7-L13
+// CONCATENATED MODULE: ./components/Header.js
 
 
 
-var GitHub = function GitHub(props) {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_1__material_ui_core_SvgIcon___default.a,
-    _extends({}, props, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 6
-      }
-    }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("path", { d: "M12.007 0C6.12 0 1.1 4.27.157 10.08c-.944 5.813 2.468 11.45 8.054 13.312.19.064.397.033.555-.084.16-.117.25-.304.244-.5v-2.042c-3.33.735-4.037-1.56-4.037-1.56-.22-.726-.694-1.35-1.334-1.756-1.096-.75.074-.735.074-.735.773.103 1.454.557 1.846 1.23.694 1.21 2.23 1.638 3.45.96.056-.61.327-1.178.766-1.605-2.67-.3-5.462-1.335-5.462-6.002-.02-1.193.42-2.35 1.23-3.226-.327-1.015-.27-2.116.166-3.09 0 0 1.006-.33 3.3 1.23 1.966-.538 4.04-.538 6.003 0 2.295-1.5 3.3-1.23 3.3-1.23.445 1.006.49 2.144.12 3.18.81.877 1.25 2.033 1.23 3.226 0 4.607-2.805 5.627-5.476 5.927.578.583.88 1.386.825 2.206v3.29c-.005.2.092.393.26.507.164.115.377.14.565.063 5.568-1.88 8.956-7.514 8.007-13.313C22.892 4.267 17.884.007 12.008 0z", __source: {
-        fileName: _jsxFileName,
-        lineNumber: 7
-      }
-    })
-  );
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (GitHub);
-
-/***/ }),
-
-/***/ "./components/Header.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_head__ = __webpack_require__("next/head");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_head__);
-var _jsxFileName = "/Users/gereth/Projects/hn-hired/components/Header.js";
-
-
-
-var Header = function Header() {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_1_next_head___default.a,
-    {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 4
-      }
-    },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+var Header_Header = function Header() {
+  return external__react__default.a.createElement(
+    head__default.a,
+    null,
+    external__react__default.a.createElement(
       "title",
-      {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 5
-        }
-      },
+      null,
       "HN Hired"
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", { name: "viewport", content: "initial-scale=1.0, width=device-width", __source: {
-        fileName: _jsxFileName,
-        lineNumber: 6
-      }
-    }),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
+    external__react__default.a.createElement("meta", { name: "viewport", content: "initial-scale=1.0, width=device-width" }),
+    external__react__default.a.createElement("link", {
       rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 7
-      }
+      href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500"
     })
   );
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (Header);
+/* harmony default export */ var components_Header = (Header_Header);
+// CONCATENATED MODULE: ./components/Sidebar.js
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-/***/ }),
-
-/***/ "./components/Loading.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__("prop-types");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ui_core__ = __webpack_require__("@material-ui/core");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ui_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_ui_core__);
-var _jsxFileName = '/Users/gereth/Projects/hn-hired/components/Loading.js';
-
-
-
-
-var styles = {
-  root: {
-    flexGrow: 1
-  }
-};
-
-var Loading = function Loading(_ref) {
-  var classes = _ref.classes,
-      loading = _ref.loading;
-
-  if (!loading) return null;
-
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'div',
-    { className: classes.root, __source: {
-        fileName: _jsxFileName,
-        lineNumber: 14
-      }
-    },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__material_ui_core__["LinearProgress"], { color: 'secondary', __source: {
-        fileName: _jsxFileName,
-        lineNumber: 15
-      }
-    })
-  );
-};
-
-Loading.propTypes = {
-  loading: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool.isRequired,
-  classes: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object.isRequired
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2__material_ui_core__["withStyles"])(styles)(Loading));
-
-/***/ }),
-
-/***/ "./components/SearchBar.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__("prop-types");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SearchSuggest__ = __webpack_require__("./components/SearchSuggest.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Github__ = __webpack_require__("./components/Github.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ui_core__ = __webpack_require__("@material-ui/core");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ui_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__material_ui_core__);
-var _jsxFileName = '/Users/gereth/Projects/hn-hired/components/SearchBar.js';
 
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -449,187 +310,109 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 
-
-
-var styles = function styles(theme) {
+var Sidebar_styles = function styles(theme) {
   return {
-    root: {
-      display: 'flex',
-      justifyContent: 'left',
-      flexWrap: 'wrap'
-    },
-    chip: {
-      margin: theme.spacing.unit
-    },
-    button: {
-      margin: theme.spacing.unit
-    },
-    typography: {
-      flex: 1
+    paper: {
+      width: 140,
+      position: 'absolute',
+      height: '100%'
     }
   };
 };
 
-var SearchBar = function SearchBar(_ref) {
-  var classes = _ref.classes,
+var Sidebar_Sidebar = function Sidebar(_ref) {
+  var trends = _ref.trends,
       searchTokens = _ref.searchTokens,
       onSearch = _ref.onSearch,
-      trends = _ref.trends,
-      date = _ref.date;
+      classes = _ref.classes;
 
-  var addToken = function addToken(value) {
-    var token = value.trim().toLowerCase();
-
-    if (!token) return;
-    var newTokens = [].concat(_toConsumableArray(new Set(searchTokens.concat(token))));
-
-    if (newTokens.length !== searchTokens.length) {
-      onSearch(newTokens);
-    }
-  };
-
-  var removeToken = function removeToken(token) {
-    var newTokens = searchTokens.filter(function (t) {
-      return t !== token;
-    });
+  var searchComments = function searchComments(trend) {
+    var newTokens = [].concat(_toConsumableArray(new Set(searchTokens.concat(trend))));
     onSearch(newTokens);
   };
 
-  var tokensList = searchTokens.map(function (token) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__material_ui_core__["Chip"], {
-      key: token,
-      label: token,
-      onDelete: function onDelete() {
-        return removeToken(token);
-      },
-      className: classes.chip,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 48
-      }
-    });
+  var listTrends = Object.entries(trends).sort(function (a, b) {
+    return b[1] - a[1];
+  }).map(function (_ref2, key) {
+    var _ref3 = _slicedToArray(_ref2, 2),
+        name = _ref3[0],
+        count = _ref3[1];
+
+    return external__react__default.a.createElement(
+      core_["ListItem"],
+      { button: true, key: name, onClick: function onClick() {
+          return searchComments(name);
+        }, dense: true },
+      external__react__default.a.createElement(
+        core_["Typography"],
+        { variant: 'body2' },
+        name,
+        ' (',
+        count,
+        ')'
+      )
+    );
   });
 
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_4__material_ui_core__["AppBar"],
-    { position: 'sticky', __source: {
-        fileName: _jsxFileName,
-        lineNumber: 57
-      }
-    },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_4__material_ui_core__["Toolbar"],
-      {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 58
-        }
-      },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_4__material_ui_core__["Typography"],
-        { variant: 'title', color: 'inherit', __source: {
-            fileName: _jsxFileName,
-            lineNumber: 59
-          }
-        },
-        'HN Hired',
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_4__material_ui_core__["Typography"],
-          { variant: 'caption', color: 'inherit', __source: {
-              fileName: _jsxFileName,
-              lineNumber: 61
-            }
-          },
-          date
-        )
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_4__material_ui_core__["Typography"],
-        { className: classes.typography, __source: {
-            fileName: _jsxFileName,
-            lineNumber: 66
-          }
-        },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__SearchSuggest__["a" /* default */], { onAddToken: addToken, suggestions: trends, __source: {
-            fileName: _jsxFileName,
-            lineNumber: 67
-          }
-        })
-      ),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'a',
-        { href: 'https://github.com/gadogado/hn-hired', target: '_blank', __source: {
-            fileName: _jsxFileName,
-            lineNumber: 69
-          }
-        },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_4__material_ui_core__["IconButton"],
-          { className: classes.button, component: 'span', __source: {
-              fileName: _jsxFileName,
-              lineNumber: 70
-            }
-          },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Github__["a" /* default */], {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 71
-            }
-          })
-        )
-      )
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'div',
-      { className: classes.root, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 75
-        }
-      },
-      tokensList
+  return external__react__default.a.createElement(
+    core_["Drawer"],
+    { variant: 'permanent', classes: classes },
+    external__react__default.a.createElement(
+      core_["List"],
+      null,
+      listTrends
     )
   );
 };
 
-SearchBar.propTypes = {
-  date: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string.isRequired,
-  trends: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object.isRequired,
-  onSearch: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired,
-  searchTokens: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.array.isRequired,
-  classes: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object.isRequired
+/* harmony default export */ var components_Sidebar = (Object(core_["withStyles"])(Sidebar_styles)(Sidebar_Sidebar));
+// CONCATENATED MODULE: ./components/Loading.js
+
+
+
+
+var Loading_styles = {
+  root: {
+    flexGrow: 1
+  }
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_4__material_ui_core__["withStyles"])(styles)(SearchBar));
+var Loading_Loading = function Loading(_ref) {
+  var classes = _ref.classes,
+      loading = _ref.loading;
 
-/***/ }),
+  if (!loading) return null;
 
-/***/ "./components/SearchSuggest.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+  return external__react__default.a.createElement(
+    'div',
+    { className: classes.root },
+    external__react__default.a.createElement(core_["LinearProgress"], { color: 'secondary' })
+  );
+};
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__("prop-types");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_autosuggest__ = __webpack_require__("react-autosuggest");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_autosuggest___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_autosuggest__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_autosuggest_highlight_match__ = __webpack_require__("autosuggest-highlight/match");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_autosuggest_highlight_match___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_autosuggest_highlight_match__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_autosuggest_highlight_parse__ = __webpack_require__("autosuggest-highlight/parse");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_autosuggest_highlight_parse___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_autosuggest_highlight_parse__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core__ = __webpack_require__("@material-ui/core");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__material_ui_core__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+/* harmony default export */ var components_Loading = (Object(core_["withStyles"])(Loading_styles)(Loading_Loading));
+// EXTERNAL MODULE: external "react-autosuggest"
+var external__react_autosuggest_ = __webpack_require__(10);
+var external__react_autosuggest__default = /*#__PURE__*/__webpack_require__.n(external__react_autosuggest_);
+
+// EXTERNAL MODULE: external "autosuggest-highlight/match"
+var match_ = __webpack_require__(11);
+var match__default = /*#__PURE__*/__webpack_require__.n(match_);
+
+// EXTERNAL MODULE: external "autosuggest-highlight/parse"
+var parse_ = __webpack_require__(12);
+var parse__default = /*#__PURE__*/__webpack_require__.n(parse_);
+
+// CONCATENATED MODULE: ./components/SearchSuggest.js
+var SearchSuggest__createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _jsxFileName = '/Users/gereth/Projects/hn-hired/components/SearchSuggest.js';
+function SearchSuggest__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function SearchSuggest__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function SearchSuggest__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
@@ -640,7 +423,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 
 
-var styles = function styles(theme) {
+var SearchSuggest_styles = function styles(theme) {
   return {
     container: {
       flexGrow: 1,
@@ -672,64 +455,43 @@ var styles = function styles(theme) {
   };
 };
 
-var renderInput = function renderInput(inputProps) {
+var SearchSuggest_renderInput = function renderInput(inputProps) {
   var classes = inputProps.classes,
       ref = inputProps.ref,
       other = _objectWithoutProperties(inputProps, ['classes', 'ref']);
 
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__material_ui_core__["TextField"], {
+  return external__react__default.a.createElement(core_["TextField"], {
     fullWidth: true,
     InputProps: _extends({
       inputRef: ref,
       classes: {
         input: classes.input
       }
-    }, other),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42
-    }
+    }, other)
   });
 };
 
-var renderSuggestion = function renderSuggestion(suggestion, _ref) {
+var SearchSuggest_renderSuggestion = function renderSuggestion(suggestion, _ref) {
   var query = _ref.query,
       isHighlighted = _ref.isHighlighted;
 
-  var matches = __WEBPACK_IMPORTED_MODULE_3_autosuggest_highlight_match___default()(suggestion, query);
-  var parts = __WEBPACK_IMPORTED_MODULE_4_autosuggest_highlight_parse___default()(suggestion, matches);
+  var matches = match__default()(suggestion, query);
+  var parts = parse__default()(suggestion, matches);
 
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_5__material_ui_core__["MenuItem"],
-    { selected: isHighlighted, component: 'div', __source: {
-        fileName: _jsxFileName,
-        lineNumber: 60
-      }
-    },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+  return external__react__default.a.createElement(
+    core_["MenuItem"],
+    { selected: isHighlighted, component: 'div' },
+    external__react__default.a.createElement(
       'div',
-      {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 61
-        }
-      },
+      null,
       parts.map(function (part, index) {
-        return part.highlight ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        return part.highlight ? external__react__default.a.createElement(
           'span',
-          { key: String(index), style: { fontWeight: 500 }, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 64
-            }
-          },
+          { key: String(index), style: { fontWeight: 500 } },
           part.text
-        ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        ) : external__react__default.a.createElement(
           'strong',
-          { key: String(index), style: { fontWeight: 300 }, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 68
-            }
-          },
+          { key: String(index), style: { fontWeight: 300 } },
           part.text
         );
       })
@@ -737,37 +499,33 @@ var renderSuggestion = function renderSuggestion(suggestion, _ref) {
   );
 };
 
-var renderSuggestionsContainer = function renderSuggestionsContainer(options) {
+var SearchSuggest_renderSuggestionsContainer = function renderSuggestionsContainer(options) {
   var containerProps = options.containerProps,
       children = options.children;
 
 
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_5__material_ui_core__["Paper"],
-    _extends({}, containerProps, { square: true, __source: {
-        fileName: _jsxFileName,
-        lineNumber: 82
-      }
-    }),
+  return external__react__default.a.createElement(
+    core_["Paper"],
+    _extends({}, containerProps, { square: true }),
     children
   );
 };
 
-var SearchSuggest = function (_Component) {
-  _inherits(SearchSuggest, _Component);
+var SearchSuggest_SearchSuggest = function (_Component) {
+  SearchSuggest__inherits(SearchSuggest, _Component);
 
   function SearchSuggest() {
     var _ref2;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, SearchSuggest);
+    SearchSuggest__classCallCheck(this, SearchSuggest);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = SearchSuggest.__proto__ || Object.getPrototypeOf(SearchSuggest)).call.apply(_ref2, [this].concat(args))), _this), _this.state = {
+    return _ret = (_temp = (_this = SearchSuggest__possibleConstructorReturn(this, (_ref2 = SearchSuggest.__proto__ || Object.getPrototypeOf(SearchSuggest)).call.apply(_ref2, [this].concat(args))), _this), _this.state = {
       value: '',
       suggestions: []
     }, _this.handleSuggestionsFetchRequested = function (_ref3) {
@@ -818,15 +576,15 @@ var SearchSuggest = function (_Component) {
       }, function () {
         _this.props.onAddToken(value);
       });
-    }, _temp), _possibleConstructorReturn(_this, _ret);
+    }, _temp), SearchSuggest__possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(SearchSuggest, [{
+  SearchSuggest__createClass(SearchSuggest, [{
     key: 'render',
     value: function render() {
       var classes = this.props.classes;
 
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_autosuggest___default.a, {
+      return external__react__default.a.createElement(external__react_autosuggest__default.a, {
         theme: {
           container: classes.container,
           suggestionsContainerOpen: classes.suggestionsContainerOpen,
@@ -834,16 +592,16 @@ var SearchSuggest = function (_Component) {
           suggestion: classes.suggestion,
           input: classes.input
         },
-        renderInputComponent: renderInput,
+        renderInputComponent: SearchSuggest_renderInput,
         suggestions: this.state.suggestions,
         onSuggestionsFetchRequested: this.handleSuggestionsFetchRequested,
         onSuggestionsClearRequested: this.handleSuggestionsClearRequested,
-        renderSuggestionsContainer: renderSuggestionsContainer,
+        renderSuggestionsContainer: SearchSuggest_renderSuggestionsContainer,
         onSuggestionSelected: this.handleSuggestionSelected,
         getSuggestionValue: function getSuggestionValue(value) {
           return value;
         },
-        renderSuggestion: renderSuggestion,
+        renderSuggestion: SearchSuggest_renderSuggestion,
         inputProps: {
           classes: classes,
           placeholder: 'Search',
@@ -851,177 +609,167 @@ var SearchSuggest = function (_Component) {
           onChange: this.handleChange,
           onKeyPress: this.handleKeyPress,
           onFocus: this.handleOnFocus
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 159
         }
       });
     }
   }]);
 
   return SearchSuggest;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+}(external__react_["Component"]);
 
-SearchSuggest.propTypes = {
-  suggestions: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object.isRequired,
-  onAddToken: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired,
-  classes: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object.isRequired
+/* harmony default export */ var components_SearchSuggest = (Object(core_["withStyles"])(SearchSuggest_styles)(SearchSuggest_SearchSuggest));
+// EXTERNAL MODULE: external "@material-ui/core/SvgIcon"
+var SvgIcon_ = __webpack_require__(13);
+var SvgIcon__default = /*#__PURE__*/__webpack_require__.n(SvgIcon_);
+
+// CONCATENATED MODULE: ./components/Github.js
+
+// from:  https://github.com/mui-org/material-ui/blob/fad1a78deed7cbf712b42bb5931b35fb2bcdbca4/docs/src/modules/components/Github.js#L7-L13
+
+
+
+var Github_GitHub = function GitHub(props) {
+  return external__react__default.a.createElement(
+    SvgIcon__default.a,
+    props,
+    external__react__default.a.createElement("path", { d: "M12.007 0C6.12 0 1.1 4.27.157 10.08c-.944 5.813 2.468 11.45 8.054 13.312.19.064.397.033.555-.084.16-.117.25-.304.244-.5v-2.042c-3.33.735-4.037-1.56-4.037-1.56-.22-.726-.694-1.35-1.334-1.756-1.096-.75.074-.735.074-.735.773.103 1.454.557 1.846 1.23.694 1.21 2.23 1.638 3.45.96.056-.61.327-1.178.766-1.605-2.67-.3-5.462-1.335-5.462-6.002-.02-1.193.42-2.35 1.23-3.226-.327-1.015-.27-2.116.166-3.09 0 0 1.006-.33 3.3 1.23 1.966-.538 4.04-.538 6.003 0 2.295-1.5 3.3-1.23 3.3-1.23.445 1.006.49 2.144.12 3.18.81.877 1.25 2.033 1.23 3.226 0 4.607-2.805 5.627-5.476 5.927.578.583.88 1.386.825 2.206v3.29c-.005.2.092.393.26.507.164.115.377.14.565.063 5.568-1.88 8.956-7.514 8.007-13.313C22.892 4.267 17.884.007 12.008 0z" })
+  );
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_5__material_ui_core__["withStyles"])(styles)(SearchSuggest));
-
-/***/ }),
-
-/***/ "./components/Sidebar.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__("prop-types");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ui_core__ = __webpack_require__("@material-ui/core");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ui_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_ui_core__);
-var _jsxFileName = '/Users/gereth/Projects/hn-hired/components/Sidebar.js';
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+/* harmony default export */ var Github = (Github_GitHub);
+// CONCATENATED MODULE: ./components/SearchBar.js
 
 
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+function SearchBar__toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 
 
 
-var styles = function styles(theme) {
+
+
+var SearchBar_styles = function styles(theme) {
   return {
-    paper: {
-      width: 140,
-      position: 'absolute',
-      height: '100%'
+    root: {
+      display: 'flex',
+      justifyContent: 'left',
+      flexWrap: 'wrap'
+    },
+    chip: {
+      margin: theme.spacing.unit
+    },
+    button: {
+      margin: theme.spacing.unit
+    },
+    typography: {
+      flex: 1
     }
   };
 };
 
-var Sidebar = function Sidebar(_ref) {
-  var trends = _ref.trends,
+var SearchBar_SearchBar = function SearchBar(_ref) {
+  var classes = _ref.classes,
       searchTokens = _ref.searchTokens,
       onSearch = _ref.onSearch,
-      classes = _ref.classes;
+      trends = _ref.trends,
+      date = _ref.date;
 
-  var searchComments = function searchComments(trend) {
-    var newTokens = [].concat(_toConsumableArray(new Set(searchTokens.concat(trend))));
+  var addToken = function addToken(value) {
+    var token = value.trim().toLowerCase();
+
+    if (!token) return;
+    var newTokens = [].concat(SearchBar__toConsumableArray(new Set(searchTokens.concat(token))));
+
+    if (newTokens.length !== searchTokens.length) {
+      onSearch(newTokens);
+    }
+  };
+
+  var removeToken = function removeToken(token) {
+    var newTokens = searchTokens.filter(function (t) {
+      return t !== token;
+    });
     onSearch(newTokens);
   };
 
-  var listTrends = Object.entries(trends).sort(function (a, b) {
-    return b[1] - a[1];
-  }).map(function (_ref2, key) {
-    var _ref3 = _slicedToArray(_ref2, 2),
-        name = _ref3[0],
-        count = _ref3[1];
-
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_2__material_ui_core__["ListItem"],
-      { button: true, key: name, onClick: function onClick() {
-          return searchComments(name);
-        }, dense: true, __source: {
-          fileName: _jsxFileName,
-          lineNumber: 27
-        }
+  var tokensList = searchTokens.map(function (token) {
+    return external__react__default.a.createElement(core_["Chip"], {
+      key: token,
+      label: token,
+      onDelete: function onDelete() {
+        return removeToken(token);
       },
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_2__material_ui_core__["Typography"],
-        { variant: 'body2', __source: {
-            fileName: _jsxFileName,
-            lineNumber: 28
-          }
-        },
-        name,
-        ' (',
-        count,
-        ')'
-      )
-    );
+      className: classes.chip
+    });
   });
 
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_2__material_ui_core__["Drawer"],
-    { variant: 'permanent', classes: classes, __source: {
-        fileName: _jsxFileName,
-        lineNumber: 35
-      }
-    },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      __WEBPACK_IMPORTED_MODULE_2__material_ui_core__["List"],
-      {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 36
-        }
-      },
-      listTrends
+  return external__react__default.a.createElement(
+    core_["AppBar"],
+    { position: 'sticky' },
+    external__react__default.a.createElement(
+      core_["Toolbar"],
+      null,
+      external__react__default.a.createElement(
+        core_["Typography"],
+        { variant: 'title', color: 'inherit' },
+        'HN Hired',
+        external__react__default.a.createElement(
+          core_["Typography"],
+          { variant: 'caption', color: 'inherit' },
+          date
+        )
+      ),
+      external__react__default.a.createElement(
+        core_["Typography"],
+        { className: classes.typography },
+        external__react__default.a.createElement(components_SearchSuggest, { onAddToken: addToken, suggestions: trends })
+      ),
+      external__react__default.a.createElement(
+        'a',
+        { href: 'https://github.com/gadogado/hn-hired', target: '_blank' },
+        external__react__default.a.createElement(
+          core_["IconButton"],
+          { className: classes.button, component: 'span' },
+          external__react__default.a.createElement(Github, null)
+        )
+      )
+    ),
+    external__react__default.a.createElement(
+      'div',
+      { className: classes.root },
+      tokensList
     )
   );
 };
 
-Sidebar.propTypes = {
-  classes: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object.isRequired,
-  onSearch: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func.isRequired,
-  searchTokens: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.array.isRequired,
-  trends: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object.isRequired
-};
+/* harmony default export */ var components_SearchBar = (Object(core_["withStyles"])(SearchBar_styles)(SearchBar_SearchBar));
+// EXTERNAL MODULE: external "fuse.js"
+var external__fuse_js_ = __webpack_require__(14);
+var external__fuse_js__default = /*#__PURE__*/__webpack_require__.n(external__fuse_js_);
 
-/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2__material_ui_core__["withStyles"])(styles)(Sidebar));
+// EXTERNAL MODULE: external "@material-ui/core/styles"
+var styles_ = __webpack_require__(15);
+var styles__default = /*#__PURE__*/__webpack_require__.n(styles_);
 
-/***/ }),
+// EXTERNAL MODULE: external "@material-ui/core/colors"
+var colors_ = __webpack_require__(16);
+var colors__default = /*#__PURE__*/__webpack_require__.n(colors_);
 
-/***/ "./lib/config.json":
-/***/ (function(module, exports) {
+// EXTERNAL MODULE: external "isomorphic-fetch"
+var external__isomorphic_fetch_ = __webpack_require__(17);
+var external__isomorphic_fetch__default = /*#__PURE__*/__webpack_require__.n(external__isomorphic_fetch_);
 
-module.exports = {"urls":{"July 2018":17442187,"June 2018":17205865,"May 2018":16967543,"April 2018":16735011,"March 2018":16492994,"February 2018":16282819,"January 2018":16052538,"December 2017":15824597,"November 2017":15601729,"October 2017":15384262,"September 2017":15148885,"August 2017":14901313,"July 2017":14688684,"June 2017":14460777,"May 2017":14238005},"trends":["ruby","elixir","ocaml","javascript","haskell","elm","python","php","bash","golang","typescript","swift","objective-c","clojurescript","scala","java ","c ","c#",".net","functional","react","angular","ember","vue","rails","redux","node","flux","django","d3","jupyter","apollo","flux","next.js","postgres","mysql","mongodb","redis","kafka","aws","terraform","google cloud","docker","kubernetes","graphql","cassandra","spark","elasticsearch","heroku","foundationdb","blockchain","machine learning","deep learning","natural language","ai","devops","remote","contract","freelance"]}
+// CONCATENATED MODULE: ./pages/index.js
 
-/***/ }),
 
-/***/ "./pages/index.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__("babel-runtime/regenerator");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Comments__ = __webpack_require__("./components/Comments.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Header__ = __webpack_require__("./components/Header.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Sidebar__ = __webpack_require__("./components/Sidebar.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Loading__ = __webpack_require__("./components/Loading.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_SearchBar__ = __webpack_require__("./components/SearchBar.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_fuse_js__ = __webpack_require__("fuse.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_fuse_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_fuse_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__lib_config_json__ = __webpack_require__("./lib/config.json");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__lib_config_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__lib_config_json__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__material_ui_core__ = __webpack_require__("@material-ui/core");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__material_ui_core___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__material_ui_core__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__material_ui_core_styles__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__material_ui_core_colors__ = __webpack_require__("@material-ui/core/colors");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__material_ui_core_colors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__material_ui_core_colors__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_isomorphic_fetch__ = __webpack_require__("isomorphic-fetch");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_isomorphic_fetch__);
-
-var _jsxFileName = '/Users/gereth/Projects/hn-hired/pages/index.js';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var pages__createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function pages__classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+function pages__possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function pages__inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /* eslint-disable react/sort-comp */
 
@@ -1037,10 +785,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-
-var theme = Object(__WEBPACK_IMPORTED_MODULE_10__material_ui_core_styles__["createMuiTheme"])({
+var theme = Object(styles_["createMuiTheme"])({
   palette: {
-    primary: __WEBPACK_IMPORTED_MODULE_11__material_ui_core_colors__["blue"]
+    primary: colors_["blue"]
   },
   typography: {
     fontFamily: 'Roboto',
@@ -1065,10 +812,8 @@ var sidebarCommentsStyle = {
   height: '100%'
 };
 
-var defaultDate = Object.keys(__WEBPACK_IMPORTED_MODULE_8__lib_config_json___default.a.urls)[0];
-
-var App = function (_Component) {
-  _inherits(App, _Component);
+var pages_App = function (_Component) {
+  pages__inherits(App, _Component);
 
   function App() {
     var _ref,
@@ -1076,30 +821,30 @@ var App = function (_Component) {
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, App);
+    pages__classCallCheck(this, App);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+    return _ret = (_temp = (_this = pages__possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       trends: {},
       comments: [],
       searchTokens: [],
       searchedComments: [],
       loading: true,
-      date: defaultDate
-    }, _this.collector = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-      var url, response, _ref3, comments, trends;
+      date: null
+    }, _this.collector = _asyncToGenerator( /*#__PURE__*/regenerator__default.a.mark(function _callee() {
+      var url, response, _ref3, comments, trends, date;
 
-      return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+      return regenerator__default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              url =  false ? '/latest/collector' // aws lambda path
+              url =  true ? '/latest/collector' // aws lambda path
               : '/collector';
               _context.next = 3;
-              return __WEBPACK_IMPORTED_MODULE_12_isomorphic_fetch___default()(url + '?date=' + _this.state.date);
+              return external__isomorphic_fetch__default()(url);
 
             case 3:
               response = _context.sent;
@@ -1110,9 +855,10 @@ var App = function (_Component) {
               _ref3 = _context.sent;
               comments = _ref3.comments;
               trends = _ref3.trends;
-              return _context.abrupt('return', { comments: comments, trends: trends });
+              date = _ref3.date;
+              return _context.abrupt('return', { comments: comments, trends: trends, date: date });
 
-            case 10:
+            case 11:
             case 'end':
               return _context.stop();
           }
@@ -1124,16 +870,16 @@ var App = function (_Component) {
       var searchedComments = searchTokens.length !== 0 ? _this.fuse.search(searchTokens.join(' ')) : comments;
 
       _this.setState({ searchedComments: searchedComments, searchTokens: searchTokens });
-    }, _temp), _possibleConstructorReturn(_this, _ret);
+    }, _temp), pages__possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(App, [{
+  pages__createClass(App, [{
     key: 'componentDidMount',
     value: function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regenerator__default.a.mark(function _callee2() {
         var _this3 = this;
 
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+        return regenerator__default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
@@ -1142,14 +888,16 @@ var App = function (_Component) {
                 */
                 this.collector().then(function (_ref5) {
                   var comments = _ref5.comments,
-                      trends = _ref5.trends;
+                      trends = _ref5.trends,
+                      date = _ref5.date;
                   return _this3.setState({
                     loading: false,
                     searchedComments: comments,
+                    date: date,
                     comments: comments,
                     trends: trends
                   }, function () {
-                    _this3.fuse = new __WEBPACK_IMPORTED_MODULE_7_fuse_js___default.a(comments, fuseOptions);
+                    _this3.fuse = new external__fuse_js__default.a(comments, fuseOptions);
                   });
                 });
 
@@ -1177,80 +925,36 @@ var App = function (_Component) {
           searchTokens = _state.searchTokens,
           date = _state.date;
 
-      var asyncContent = !loading && __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+      var asyncContent = !loading && external__react__default.a.createElement(
         'div',
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 104
-          }
-        },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_SearchBar__["a" /* default */], {
+        null,
+        external__react__default.a.createElement(components_SearchBar, {
           onSearch: this.searchComments,
           searchTokens: searchTokens,
           trends: trends,
-          date: date,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 105
-          }
+          date: date
         }),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
+        external__react__default.a.createElement(
           'div',
-          { style: sidebarCommentsStyle, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 111
-            }
-          },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Sidebar__["a" /* default */], {
+          { style: sidebarCommentsStyle },
+          external__react__default.a.createElement(components_Sidebar, {
             trends: trends,
             onSearch: this.searchComments,
-            searchTokens: searchTokens,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 112
-            }
+            searchTokens: searchTokens
           }),
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Comments__["a" /* default */], { comments: searchedComments, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 117
-            }
-          })
+          external__react__default.a.createElement(components_Comments, { comments: searchedComments })
         )
       );
 
-      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_1_react__["Fragment"],
-        {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 123
-          }
-        },
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Header__["a" /* default */], {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 124
-          }
-        }),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__material_ui_core__["CssBaseline"], {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 125
-          }
-        }),
-        __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_10__material_ui_core_styles__["MuiThemeProvider"],
-          { theme: theme, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 126
-            }
-          },
-          __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_Loading__["a" /* default */], { loading: loading, __source: {
-              fileName: _jsxFileName,
-              lineNumber: 127
-            }
-          }),
+      return external__react__default.a.createElement(
+        external__react_["Fragment"],
+        null,
+        external__react__default.a.createElement(components_Header, null),
+        external__react__default.a.createElement(core_["CssBaseline"], null),
+        external__react__default.a.createElement(
+          styles_["MuiThemeProvider"],
+          { theme: theme },
+          external__react__default.a.createElement(components_Loading, { loading: loading }),
           asyncContent
         )
       );
@@ -1258,131 +962,87 @@ var App = function (_Component) {
   }]);
 
   return App;
-}(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
+}(external__react_["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (App);
-
-/***/ }),
-
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/index.js");
-
+/* harmony default export */ var pages = __webpack_exports__["default"] = (pages_App);
 
 /***/ }),
-
-/***/ "@material-ui/core":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core");
-
-/***/ }),
-
-/***/ "@material-ui/core/SvgIcon":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/SvgIcon");
-
-/***/ }),
-
-/***/ "@material-ui/core/colors":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/colors");
-
-/***/ }),
-
-/***/ "@material-ui/core/styles":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/styles");
-
-/***/ }),
-
-/***/ "@material-ui/icons/Done":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/icons/Done");
-
-/***/ }),
-
-/***/ "autosuggest-highlight/match":
-/***/ (function(module, exports) {
-
-module.exports = require("autosuggest-highlight/match");
-
-/***/ }),
-
-/***/ "autosuggest-highlight/parse":
-/***/ (function(module, exports) {
-
-module.exports = require("autosuggest-highlight/parse");
-
-/***/ }),
-
-/***/ "babel-runtime/regenerator":
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-runtime/regenerator");
 
 /***/ }),
-
-/***/ "fuse.js":
+/* 6 */
 /***/ (function(module, exports) {
 
-module.exports = require("fuse.js");
+module.exports = require("uuid/v4");
 
 /***/ }),
-
-/***/ "isomorphic-fetch":
-/***/ (function(module, exports) {
-
-module.exports = require("isomorphic-fetch");
-
-/***/ }),
-
-/***/ "next/head":
-/***/ (function(module, exports) {
-
-module.exports = require("next/head");
-
-/***/ }),
-
-/***/ "prop-types":
-/***/ (function(module, exports) {
-
-module.exports = require("prop-types");
-
-/***/ }),
-
-/***/ "react":
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
-/***/ }),
-
-/***/ "react-autosuggest":
-/***/ (function(module, exports) {
-
-module.exports = require("react-autosuggest");
-
-/***/ }),
-
-/***/ "react-infinite-scroll-component":
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-infinite-scroll-component");
 
 /***/ }),
-
-/***/ "uuid/v4":
+/* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("uuid/v4");
+module.exports = require("@material-ui/icons/Done");
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("next/head");
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-autosuggest");
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = require("autosuggest-highlight/match");
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = require("autosuggest-highlight/parse");
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/SvgIcon");
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+module.exports = require("fuse.js");
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/colors");
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+module.exports = require("isomorphic-fetch");
 
 /***/ })
-
-/******/ });
-//# sourceMappingURL=index.js.map
+/******/ ]);
