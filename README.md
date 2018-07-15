@@ -20,7 +20,7 @@
 
 ### Setup
 1. Clone this repo and run `yarn` to install the project dependencies.  
-2. Run `yarn run dev` to start the local server and visit `http://localhost:3000` to run the app.
+2. Run `yarn dev` to start the local server and visit `http://localhost:3000` to run the app.
 3. If you're unfamiliar with `Next.js` the file system is the main API. Anything within `pages/` ends up having a corresponding route.  With this application there is a single file, [index.js](pages/index.js), which is the entry point.  
 
 ### Serverless Deployment
@@ -34,7 +34,7 @@ $ cat ~/.aws/credentials
 aws_access_key_id = abc
 aws_secret_access_key = 123
 ```
-3. Build the project with `yarn run build`
+3. Build the project with `yarn build`
 4. Create an AWS Lambda function and deploy it:
 
   ```
@@ -44,4 +44,4 @@ aws_secret_access_key = 123
   # If there are issues with the path to the bin you can either install claudia as a global package or simply just specify the full path to the respective bin, `node_modules/.bin/claudia`.
   ```
 
-5. Any subsequent deploys should run `yarn run deploy`
+5. Any subsequent deploys should run `yarn deploy`
