@@ -67,28 +67,28 @@ module.exports =
 /******/ 	__webpack_require__.p = "/latestundefined";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 18:
+/***/ "./node_modules/next/dist/pages/_error.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(19);
+module.exports = __webpack_require__("next/error")
 
 
 /***/ }),
 
-/***/ 19:
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(20)
+module.exports = __webpack_require__("./node_modules/next/dist/pages/_error.js");
 
 
 /***/ }),
 
-/***/ 20:
+/***/ "next/error":
 /***/ (function(module, exports) {
 
 module.exports = require("next/error");
@@ -96,3 +96,4 @@ module.exports = require("next/error");
 /***/ })
 
 /******/ });
+//# sourceMappingURL=_error.js.map

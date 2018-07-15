@@ -10,7 +10,7 @@
     "start": "NODE_ENV=production node server.js",
     "deploy": "claudia update --region us-west-1 --handler lambda.handler --deploy-proxy-api --profile claudia --memory 1280",
     "prettier": "prettier --single-quote es6 --write '{components,lib,pages}/**js'",
-    "eslint": "eslint {components,lib,pages}"
+    "test": "eslint {components,lib,pages}"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "cheerio": "^1.0.0-rc.2",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-react": "^1.1.7",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
     "express": "^4.16.3",
     "fuse.js": "^3.2.0",
     "isomorphic-fetch": "^2.2.1",
@@ -46,7 +47,6 @@
   "devDependencies": {
     "claudia": "^5.0.0",
     "eslint": "^5.1.0",
-    "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-promise": "^3.8.0",
