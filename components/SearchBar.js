@@ -66,7 +66,11 @@ const SearchBar = ({ classes, searchTokens, onSearch, trends, date }) => {
         <Typography className={classes.typography}>
           <SearchSuggest onAddToken={addToken} suggestions={trends} />
         </Typography>
-        <a href="https://github.com/gadogado/hn-hired" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://github.com/gadogado/hn-hired"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <IconButton className={classes.button} component="span">
             <Github />
           </IconButton>
