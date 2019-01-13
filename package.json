@@ -36,7 +36,7 @@
     "prop-types": "^15.0.0",
     "react": "16.3.1",
     "react-autosuggest": "^9.3.4",
-    "react-dom": "16.3.1",
+    "react-dom": "16.3.3",
     "react-infinite-scroll-component": "^4.0.3",
     "styled-components": "^3.3.3"
   },
