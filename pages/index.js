@@ -5,6 +5,7 @@ import Comments from '../components/Comments';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import Loading from '../components/Loading';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchBar from '../components/SearchBar';
 import Fuse from 'fuse.js';
 import { CssBaseline } from '@material-ui/core';
@@ -39,12 +40,17 @@ const sidebarCommentsStyle = {
   height: '100%'
 };
 
+const searchingStyle = {
+  margin: '0 auto'
+};
+
 class App extends Component {
   state = {
     trends: {},
     comments: [],
     searchTokens: [],
     searchedComments: [],
+    searching: false,
     loading: true,
     date: null
   };
@@ -62,12 +68,15 @@ class App extends Component {
 
   searchComments = searchTokens => {
     const { comments } = this.state;
-    const searchedComments =
-      searchTokens.length !== 0
-        ? this.fuse.search(searchTokens.join(' '))
-        : comments;
+    this.setState({ searching: true });
 
-    this.setState({ searchedComments, searchTokens });
+    setTimeout(() => {
+      const searchedComments =
+        searchTokens.length !== 0
+          ? this.fuse.search(searchTokens.join(' '))
+          : comments;
+      this.setState({ searching: false, searchTokens, searchedComments });
+    }, 100); // force loader
   };
 
   async componentDidMount() {
@@ -94,6 +103,7 @@ class App extends Component {
     const {
       loading,
       trends,
+      searching,
       searchedComments,
       searchTokens,
       date
@@ -107,12 +117,20 @@ class App extends Component {
           date={date}
         />
         <div style={sidebarCommentsStyle}>
-          <Sidebar
-            trends={trends}
-            onSearch={this.searchComments}
-            searchTokens={searchTokens}
-          />
-          <Comments comments={searchedComments} />
+          {searching ? (
+            <div style={searchingStyle}>
+              <CircularProgress color="secondary" />
+            </div>
+          ) : (
+            <div>
+              <Sidebar
+                trends={trends}
+                onSearch={this.searchComments}
+                searchTokens={searchTokens}
+              />
+              <Comments comments={searchedComments} />
+            </div>
+          )}
         </div>
       </div>
     );
