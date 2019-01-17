@@ -82,13 +82,13 @@ class Comments extends Component {
 
     return (
       <Fragment>
+        {/* Need to override code tags from hn comments */}
         <style global jsx>{`
           code {
             display: inline-block;
             width: 600px;
           }
-        `}</style>{' '}
-        {/* Need to override code tags from hn comments */}
+        `}</style>
         <List classes={classes}>
           <Scroll
             dataLength={results.length}
