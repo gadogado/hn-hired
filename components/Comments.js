@@ -15,14 +15,17 @@ import {
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
     width: '100%',
     paddingLeft: 140,
-    flexGrow: 1
+    flexGrow: 0,
+    flexWrap: 'wrap-reverse',
+    alignContent: 'flex-end',
+    alignItems: 'center',
+    overflow: 'scroll'
   }
 });
 
-const scrollChunk = 10;
+const scrollChunk = 25;
 
 class Comments extends Component {
   state = {
@@ -78,22 +81,31 @@ class Comments extends Component {
     ));
 
     return (
-      <List classes={classes}>
-        <Scroll
-          dataLength={results.length}
-          next={this.next}
-          hasMore={hasMore}
-          loader={<h4>Loading....</h4>}
-          height={1280}
-          endMessage={
-            <p style={{ textAlign: 'center' }}>
-              <Done />
-            </p>
+      <Fragment>
+        <style global jsx>{`
+          code {
+            display: inline-block;
+            width: 600px;
           }
-        >
-          {resultsList}
-        </Scroll>
-      </List>
+        `}</style>{' '}
+        {/* Need to override code tags from hn comments */}
+        <List classes={classes}>
+          <Scroll
+            dataLength={results.length}
+            next={this.next}
+            hasMore={hasMore}
+            loader={<h4>Loading....</h4>}
+            height={1280}
+            endMessage={
+              <p style={{ textAlign: 'center' }}>
+                <Done />
+              </p>
+            }
+          >
+            {resultsList}
+          </Scroll>
+        </List>
+      </Fragment>
     );
   }
 }
