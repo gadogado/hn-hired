@@ -67,7 +67,8 @@ class Comments extends Component {
   render() {
     const { hasMore, results } = this.state;
     const { classes } = this.props;
-    const resultsList = results.map(comment => (
+    const resultsList = results.map(comment => ({ ...comment, text: comment.text.replace(/(<a.+?)(>)/g, '$1 target="_blank">') }))
+    .map(comment => (
       <Fragment key={uuidv4()}>
         <ListItem>
           <ListItemText>
