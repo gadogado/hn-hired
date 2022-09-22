@@ -1,0 +1,46 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+model Story {
+  id    Int    @id @default(autoincrement())
+  items Item[]
+
+  title             String
+  firebaseId        Int      @unique
+  firebaseCreatedAt DateTime @default(now())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Item {
+  id                Int      @id @default(autoincrement())
+  by                String
+  company           String?
+  text              String
+  firebaseId        Int      @unique
+  firebaseCreatedAt DateTime
+  storyId           Int
+  story             Story    @relation(fields: [storyId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  json              Json?
+  parttime          Boolean  @default(false)
+  contract          Boolean  @default(false)
+  remote            Boolean  @default(false)
+  tags              Tag[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  slug  String @unique
+  items Item[]
+}
