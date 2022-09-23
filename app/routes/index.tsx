@@ -175,7 +175,7 @@ export default function Index() {
   useEffect(() => {
     if (!scrollableRef?.current) return;
     scrollableRef.current.scrollTop = 0;
-  }, [searchText, story]);
+  }, [searchText, story, scrollableRef]);
 
   return (
     <div className="bg-slate-200">

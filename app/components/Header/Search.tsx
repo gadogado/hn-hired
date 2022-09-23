@@ -28,6 +28,7 @@ export default function Search({ onSearchItems, searchText }: SearchProps) {
       <input
         className="outline-1.5 sm:w-75 flex w-full rounded-lg border-slate-200 bg-gray-100 p-2 pr-8 text-gray-600 outline-slate-400 transition-colors focus:shadow focus:outline"
         name="search"
+        role="search"
         placeholder="Search"
         autoComplete="off"
         value={search}
@@ -41,12 +42,12 @@ export default function Search({ onSearchItems, searchText }: SearchProps) {
           />
         </div>
       ) : null}
-      <div
+      <button
         onClick={handleSubmit}
         className={`right-0 w-8 rounded-r-lg border-[1px] bg-gray-200 fill-gray-500 ${inputIcon}`}
       >
         <SearchIcon className=" w-4 fill-gray-500 transition-colors duration-200 hover:fill-gray-700" />
-      </div>
+      </button>
     </form>
   );
 }

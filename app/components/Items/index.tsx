@@ -8,6 +8,7 @@ import clsx from "clsx";
 import { format } from "timeago.js";
 import ItemsSkeleton from "./ItemsSkeleton";
 import { MAX_ITEM_TEXT } from "~/utils/constants";
+import { sanitize } from "~/utils/helpers";
 
 interface ItemCardProps {
   item: ItemWithTags;
@@ -33,8 +34,8 @@ function ItemCard({ item, selectedFilters, searchText }: ItemCardProps) {
   const toggleExpanded = () => setExpanded((prev) => !prev);
 
   const mark = (html: string) => {
-    const re = new RegExp(searchText, "gi");
-    return html.replace(re, `<mark>${searchText}</mark>`);
+    const re = new RegExp(sanitize(searchText), "gi");
+    return html.replace(re, `<mark>$&</mark>`);
   };
   const markedItemText = searchText.length ? mark(item.text) : item.text;
 

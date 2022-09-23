@@ -2,6 +2,7 @@ import { prisma } from "~/db.server";
 import { Prisma } from "@prisma/client";
 import type { Tag } from "~/models/tag.server";
 import type { Item } from "@prisma/client";
+import { sanitize } from "~/utils/helpers";
 
 type ItemWithTags = Item & {
   tags: Tag[];
@@ -28,7 +29,9 @@ export async function getItems(options: QueryOptions) {
   const where = {
     storyId,
     ...(remote && { remote }),
-    ...(search && { text: { search: `'${search}'` } }),
+    ...(search && {
+      text: { search: sanitize(search) },
+    }),
     ...(filters?.length && {
       AND: slugs?.map((slug) => ({
         tags: {
