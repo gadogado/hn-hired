@@ -5,6 +5,6 @@ export async function getLatestStories() {
   return prisma.story.findMany({
     take: 12,
     orderBy: [{ firebaseCreatedAt: "desc" }],
-    include: { items: true },
+    // include: { items: true },
   });
 }
