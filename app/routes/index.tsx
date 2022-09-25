@@ -128,7 +128,10 @@ export default function Index() {
     useScrollableRef({
       bottomThreshold: SCROLLABLE_THRESHOLD,
     });
-  const fetcherLoading = itemsFetcher.state !== "idle";
+
+  const fetcherNotIdle = itemsFetcher?.state !== "idle";
+  const fetcherLoading = fetcherNotIdle && !history.current?.cursorId;
+  const fetchingMore = fetcherNotIdle && !!history.current?.cursorId;
 
   /* 
     Effects
@@ -163,6 +166,7 @@ export default function Index() {
   useEffect(() => {
     if (
       fetcherLoading ||
+      fetchingMore ||
       !items.length ||
       items.length >= totalItemsCount ||
       !scrollableBottomReached
@@ -199,6 +203,7 @@ export default function Index() {
             <Items
               items={items}
               fetcherLoading={fetcherLoading}
+              fetchingMore={fetchingMore}
               totalItemsCount={totalItemsCount}
               selectedFilters={selectedFilters}
               remoteOnly={remoteOnly}
