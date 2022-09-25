@@ -19,6 +19,7 @@ interface ItemCardProps {
 interface ItemsProps {
   items: ItemWithTags[];
   fetcherLoading: boolean;
+  fetchingMore: boolean;
   totalItemsCount: number;
   selectedFilters: string[];
   remoteOnly: boolean;
@@ -94,6 +95,7 @@ function ItemCard({ item, selectedFilters, searchText }: ItemCardProps) {
 export default function Items({
   items,
   fetcherLoading = false,
+  fetchingMore = false,
   totalItemsCount,
   selectedFilters,
   onToggleRemoteOnly,
@@ -129,16 +131,20 @@ export default function Items({
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        {items.map((item, key) => (
-          <ItemCard
-            item={item}
-            key={key}
-            selectedFilters={selectedFilters}
-            searchText={searchText}
-          />
-        ))}
+        {fetcherLoading ? (
+          <ItemsSkeleton />
+        ) : (
+          items.map((item, key) => (
+            <ItemCard
+              item={item}
+              key={key}
+              selectedFilters={selectedFilters}
+              searchText={searchText}
+            />
+          ))
+        )}
       </div>
-      {fetcherLoading ? <ItemsSkeleton /> : null}
+      {fetchingMore ? <ItemsSkeleton /> : null}
     </div>
   );
 }
