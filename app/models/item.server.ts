@@ -30,7 +30,7 @@ export async function getItems(options: QueryOptions) {
     storyId,
     ...(remote && { remote }),
     ...(search && {
-      text: { search: sanitize(search) },
+      text: { contains: sanitize(search), mode: "insensitive" },
     }),
     ...(filters?.length && {
       AND: slugs?.map((slug) => ({
@@ -46,9 +46,11 @@ export async function getItems(options: QueryOptions) {
   };
 
   return prisma.$transaction([
+    // @ts-ignore
     prisma.item.count({ where }),
     prisma.item.findMany({
       take: 12,
+      // @ts-ignore
       where,
       orderBy: [{ firebaseCreatedAt }],
       ...(cursorId && { cursor: { id: Number(cursorId) } }),
