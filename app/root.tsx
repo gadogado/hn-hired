@@ -38,6 +38,7 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
+        <base target="_blank" />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
