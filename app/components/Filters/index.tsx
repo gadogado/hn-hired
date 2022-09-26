@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useFetcher } from "@remix-run/react";
 import Filter from "./Filter";
 import Cancel from "./Icons/Cancel";
+import { useMediaQuery } from "react-responsive";
 
 interface FiltersProps {
   selectFilters: (slugs: string[]) => void;
@@ -13,6 +14,7 @@ export default function Filters({
   selectedFilters,
 }: FiltersProps) {
   const fetcher = useFetcher();
+  const isSmAndUp = useMediaQuery({ query: "(min-width: 640px)" });
 
   useEffect(() => {
     if (fetcher.type === "init") fetcher.load(`/tags`);
@@ -31,7 +33,10 @@ export default function Filters({
     selectFilters([]);
   };
 
-  const { tags: filters } = fetcher.data || {};
+  const { tags: filters = [] } = fetcher.data || {};
+  const availableFilters = isSmAndUp
+    ? filters
+    : filters.slice(0, filters.length / 2.3);
 
   return (
     <div>
@@ -53,16 +58,18 @@ export default function Filters({
 
         <div className="min-h-fit rounded bg-white p-2.5 text-sm shadow-container">
           <div className="flex flex-row flex-wrap gap-2.5">
-            {filters
-              ? filters.map(({ slug }: { slug: string }, idx: number) => (
-                  <Filter
-                    key={slug}
-                    slug={slug}
-                    position={idx}
-                    isSelected={isSelected(slug)}
-                    onToggleFilter={toggleFilter}
-                  />
-                ))
+            {availableFilters.length
+              ? availableFilters.map(
+                  ({ slug }: { slug: string }, idx: number) => (
+                    <Filter
+                      key={slug}
+                      slug={slug}
+                      position={idx}
+                      isSelected={isSelected(slug)}
+                      onToggleFilter={toggleFilter}
+                    />
+                  )
+                )
               : [...Array(12)].map((_, key) => (
                   <span
                     key={key}

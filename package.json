@@ -55,6 +55,7 @@
     "p-limit": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-responsive": "^9.0.0",
     "timeago.js": "^4.0.2",
     "tiny-invariant": "^1.2.0",
     "use-scrollable-ref": "^1.0.2",

@@ -7,7 +7,7 @@ type LoaderData = {
   tags: Partial<Tag>[];
 };
 
-export const loader: LoaderFunction = async ({ params }) => {
+export const loader: LoaderFunction = async () => {
   const tags = await getTags();
   return json<LoaderData>({ tags });
 };
