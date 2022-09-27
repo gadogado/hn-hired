@@ -36,6 +36,9 @@ interface ItemTextMatches {
 async function getLatestStoryAndItems() {
   installGlobals();
 
+  const flyRegion = process.env.FLY_REGION;
+  if (flyRegion && flyRegion !== "lax") return;
+
   const tags = await prisma.tag.findMany({ select: { slug: true } });
   if (!tags.length) throw new Error("Missing Tags.");
 
