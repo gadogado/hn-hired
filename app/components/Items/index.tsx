@@ -25,8 +25,6 @@ interface ItemsProps {
   remoteOnly: boolean;
   sortOrder: SortOrder;
   searchText: string;
-  onToggleSortOrder: () => void;
-  onToggleRemoteOnly: () => void;
 }
 
 function ItemCard({ item, selectedFilters, searchText }: ItemCardProps) {
@@ -98,10 +96,8 @@ export default function Items({
   fetchingMore = false,
   totalItemsCount,
   selectedFilters,
-  onToggleRemoteOnly,
   remoteOnly,
   sortOrder,
-  onToggleSortOrder,
   searchText,
 }: ItemsProps) {
   return (
@@ -122,11 +118,8 @@ export default function Items({
           )}
         >
           <div className="flex gap-1.5">
-            <Sort sortOrder={sortOrder} onToggleSortOrder={onToggleSortOrder} />
-            <RemoteOnly
-              remoteOnly={remoteOnly}
-              onToggleRemoteOnly={onToggleRemoteOnly}
-            />
+            <Sort sortOrder={sortOrder} />
+            <RemoteOnly remoteOnly={remoteOnly} />
           </div>
         </div>
       </div>

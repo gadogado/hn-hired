@@ -7,17 +7,9 @@ interface HeaderProps {
   searchText: string;
   stories: Story[];
   story: Story;
-  onSelectStory: (story: Story) => void;
-  onSearchItems: (searchText: string) => void;
 }
 
-export default function Header({
-  searchText,
-  onSearchItems,
-  story,
-  stories,
-  onSelectStory,
-}: HeaderProps) {
+export default function Header({ searchText, story, stories }: HeaderProps) {
   return (
     <header className="box-sizing border-b border-b-slate-300 bg-stone-50">
       <div className="mx-auto flex h-28 max-w-5xl flex-col justify-between py-1 px-4 pb-3 sm:h-20 sm:flex-row sm:items-center sm:py-0 sm:pb-0">
@@ -34,13 +26,9 @@ export default function Header({
               <Github className="h-5 w-5 fill-slate-700" />
             </a>
           </div>
-          <SelectStory
-            story={story}
-            stories={stories}
-            onSelectStory={onSelectStory}
-          />
+          <SelectStory story={story} stories={stories} />
         </div>
-        <Search searchText={searchText} onSearchItems={onSearchItems} />
+        <Search searchText={searchText} />
       </div>
     </header>
   );
