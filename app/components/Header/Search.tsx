@@ -1,23 +1,29 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import SearchIcon from "./Icons/Search";
 import CancelIcon from "./Icons/Cancel";
+import { ItemsFiltersDispatch } from "~/routes";
 
 interface SearchProps {
   searchText: string;
-  onSearchItems: (searchText: string) => void;
 }
 
-export default function Search({ onSearchItems, searchText }: SearchProps) {
+export default function Search({ searchText }: SearchProps) {
+  const { filterItems } = useContext(ItemsFiltersDispatch);
   const [search, setSearch] = useState(searchText);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    onSearchItems(search);
+    return dispatchSearch();
   };
 
   const resetSearch = () => {
     setSearch("");
-    onSearchItems("");
+    return dispatchSearch({ reset: true });
+  };
+
+  const dispatchSearch = ({ reset = false } = {}) => {
+    const payload = { name: "searchText", value: reset ? "" : search };
+    return filterItems({ type: "change", payload });
   };
 
   const inputIcon =

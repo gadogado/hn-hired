@@ -1,18 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer, createContext } from "react";
+import type { Dispatch } from "react";
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useFetcher } from "@remix-run/react";
 import { getLatestStories } from "~/models/story.server";
 import { getItems } from "~/models/item.server";
+import type { Story } from "~/models/story.server";
+import type { Item } from "~/models/item.server";
+import { SCROLLABLE_THRESHOLD } from "~/utils/constants";
+import isequal from "lodash.isequal";
+import omit from "lodash.omit";
+import useScrollableRef from "use-scrollable-ref";
 import Header from "~/components/Header";
 import Items from "~/components/Items";
 import Filters from "~/components/Filters";
-import type { Story } from "~/models/story.server";
-import type { Item, SortOrder } from "~/models/item.server";
-import { SCROLLABLE_THRESHOLD } from "~/utils/constants";
-import isequal from "lodash.isequal";
-import useScrollableRef from "use-scrollable-ref";
+import { itemsFiltersReducer } from "~/reducers/itemsFiltersReducer";
+import type {
+  ItemsFilters,
+  DispatchAction,
+} from "~/reducers/itemsFiltersReducer";
 
 type LoaderData = {
   stories: Story[];
@@ -21,27 +28,8 @@ type LoaderData = {
   initialStory: Story;
 };
 
-interface FilterItems {
-  newStory?: Story;
-  newSelectedFilters?: string[];
-  newSearchText?: string;
-  newRemoteOnly?: boolean;
-  newSortOrder?: SortOrder;
-  newCursorId?: string;
-}
-
-interface FiltersHistory {
-  prev?: FiltersParams;
-  current?: FiltersParams;
-}
-
-interface FiltersParams {
-  storyId?: Story;
-  filters?: string;
-  search?: string;
-  remoteOnly?: boolean;
-  sort?: SortOrder;
-  cursorId?: string;
+interface ItemsFiltersContext {
+  filterItems: Dispatch<DispatchAction>;
 }
 
 export const loader: LoaderFunction = async () => {
@@ -57,72 +45,45 @@ export const loader: LoaderFunction = async () => {
   });
 };
 
+const ItemsFiltersDispatch = createContext<ItemsFiltersContext>({
+  filterItems: () => null,
+});
+
 export default function Index() {
   const itemsFetcher = useFetcher();
   const { initialStory, initialItems, initialItemsCount, stories } =
     useLoaderData();
 
-  const [story, setStory] = useState(initialStory);
   const [items, setItems] = useState(initialItems);
   const [totalItemsCount, setTotalItemsCount] =
     useState<number>(initialItemsCount);
-  const [searchText, setSearchText] = useState("");
-  const [remoteOnly, setRemoteOnly] = useState(false);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
-  const [sortOrder, setSortOrder] = useState<SortOrder>("desc");
-  const [history, setHistory] = useState<FiltersHistory>({});
 
-  const onSelectStory = (newStory: Story) => {
-    setStory(newStory);
-    filterItems({ newStory });
-  };
-  const onSearchItems = (newSearchText: string) => {
-    setSearchText(newSearchText);
-    filterItems({ newSearchText });
-  };
-  const onSelectFilters = (newSelectedFilters: string[]) => {
-    setSelectedFilters(newSelectedFilters);
-    filterItems({ newSelectedFilters });
-  };
-  const onToggleRemoteOnly = () => {
-    setRemoteOnly((prev) => !prev);
-    filterItems({ newRemoteOnly: !remoteOnly });
-  };
-  const onToggleSortOrder = () => {
-    const newSortOrder: SortOrder = sortOrder !== "desc" ? "desc" : "asc";
-    setSortOrder(newSortOrder);
-    filterItems({ newSortOrder });
+  const initialFilteredState: ItemsFilters = {
+    searchText: "",
+    fetcherUrl: "",
+    sortOrder: "desc",
+    remoteOnly: false,
+    selectedFilters: [],
+    story: initialStory,
+    cursor: null,
+    prevFilters: null,
   };
 
-  const filterItems = ({
-    newStory,
-    newSelectedFilters,
-    newSearchText,
-    newRemoteOnly,
-    newSortOrder,
-    newCursorId,
-  }: FilterItems) => {
-    const params = new URLSearchParams();
-    const storyId = newStory?.id || story.id;
-    const base = `/stories/${storyId}/items`;
-    if (storyId !== initialStory.id) params.append("storyId", storyId);
+  const [itemFilters, filterItems] = useReducer(
+    itemsFiltersReducer,
+    initialFilteredState
+  );
 
-    const search = newSearchText ?? searchText;
-    if (search.length) params.append("search", search);
-
-    const filters = newSelectedFilters || selectedFilters;
-    if (filters.length) params.append("filters", filters.join(","));
-
-    params.append("remoteOnly", String(newRemoteOnly ?? remoteOnly));
-    params.append("sort", newSortOrder || sortOrder);
-    if (newCursorId) params.append("cursorId", newCursorId);
-
-    setHistory(({ current: prevCurrent }) => ({
-      prev: prevCurrent,
-      current: Object.fromEntries(params),
-    }));
-    itemsFetcher.load(`${base}?${params}`);
-  };
+  const {
+    story,
+    cursor,
+    sortOrder,
+    fetcherUrl,
+    searchText,
+    remoteOnly,
+    selectedFilters,
+    prevFilters,
+  } = itemFilters;
 
   const { scrollableRef, scrollPosition, scrollableBottomReached } =
     useScrollableRef({
@@ -130,38 +91,50 @@ export default function Index() {
     });
 
   const fetcherNotIdle = itemsFetcher?.state !== "idle";
-  const fetcherLoading = fetcherNotIdle && !history.current?.cursorId;
-  const fetchingMore = fetcherNotIdle && !!history.current?.cursorId;
+  const fetcherLoading = fetcherNotIdle && !cursor;
+  const fetchingMore = fetcherNotIdle && !!cursor;
 
   /* 
     Effects
   */
+
+  useEffect(() => {
+    if (!fetcherUrl.length) return;
+    itemsFetcher.load(fetcherUrl);
+  }, [fetcherUrl]);
+
   useEffect(() => {
     if (fetcherLoading) return;
     if (itemsFetcher?.data) {
       const { storyItems, storyItemsCount } = itemsFetcher.data || {};
       setItems((prevItems: Partial<Item>[]) => {
-        const { cursorId: prevCursorId, ...prevHistory } = history?.prev || {};
-        const { cursorId: nextCursorId, ...currentHistory } =
-          history.current || {};
+        const { cursor: prevCursor, ...prev } = prevFilters || {};
+        const { cursor: currentCursor, ...current } = itemFilters || {};
 
-        if (!prevCursorId && !nextCursorId) return storyItems;
-        if (!isequal(prevHistory, currentHistory)) return storyItems;
+        /* first fetcher request */
+        if (!prevCursor && !currentCursor) return storyItems;
 
-        /* Append new items without the previous search cursor */
+        /* fetcher filters have changed */
+        const omitAttrs = ["prevFilters", "fetcherUrl"];
+        const prevOmit = omit(prev, ...omitAttrs);
+        const currentOmit = omit(current, ...omitAttrs);
+        if (!isequal(prevOmit, currentOmit)) return storyItems;
+
+        /* cursor based pagination  */
         const itemsWithoutCursor = storyItems.slice(1);
         const previousCursorItemId = String(storyItems?.[0]?.id);
-
-        if (!prevCursorId) return [...prevItems, ...itemsWithoutCursor];
-        if (prevCursorId === previousCursorItemId) {
-          return [...prevItems, ...itemsWithoutCursor];
+        if (
+          (!prevCursor && currentCursor) ||
+          currentCursor === previousCursorItemId
+        ) {
+          return [...new Set([...prevItems, ...itemsWithoutCursor])];
         } else {
           return prevItems;
         }
       });
       setTotalItemsCount(storyItemsCount);
     }
-  }, [itemsFetcher.data]);
+  }, [itemsFetcher.data, fetcherLoading, itemFilters, prevFilters]);
 
   useEffect(() => {
     if (
@@ -172,9 +145,17 @@ export default function Index() {
       !scrollableBottomReached
     )
       return;
-    const newCursorId = String(items.at(-1).id);
-    filterItems({ newCursorId });
-  }, [scrollPosition]);
+    const cursor = String(items.at(-1).id);
+    const payload = { name: "cursor", value: cursor };
+    filterItems({ type: "change", payload });
+  }, [
+    scrollPosition,
+    totalItemsCount,
+    items,
+    scrollableBottomReached,
+    fetcherLoading,
+    fetchingMore,
+  ]);
 
   useEffect(() => {
     if (!scrollableRef?.current) return;
@@ -182,39 +163,32 @@ export default function Index() {
   }, [searchText, story, scrollableRef]);
 
   return (
-    <div className="bg-slate-200">
-      <Header
-        story={story}
-        stories={stories}
-        onSelectStory={onSelectStory}
-        searchText={searchText}
-        onSearchItems={onSearchItems}
-      />
-      <main
-        ref={scrollableRef}
-        className="relative h-[calc(100vh-113px)] overflow-scroll bg-slate-200 pb-10 sm:h-[calc(100vh-81px)]"
-      >
-        <div className="mx-auto mt-8 flex flex-col bg-stone-50 p-4 text-slate-700 lg:max-w-5xl">
-          <div className="flex flex-col gap-8">
-            <Filters
-              selectedFilters={selectedFilters}
-              selectFilters={onSelectFilters}
-            />
-            <Items
-              items={items}
-              fetcherLoading={fetcherLoading}
-              fetchingMore={fetchingMore}
-              totalItemsCount={totalItemsCount}
-              selectedFilters={selectedFilters}
-              remoteOnly={remoteOnly}
-              onToggleRemoteOnly={onToggleRemoteOnly}
-              sortOrder={sortOrder}
-              onToggleSortOrder={onToggleSortOrder}
-              searchText={searchText}
-            />
+    <ItemsFiltersDispatch.Provider value={{ filterItems }}>
+      <div className="bg-slate-200">
+        <Header story={story} stories={stories} searchText={searchText} />
+        <main
+          ref={scrollableRef}
+          className="relative h-[calc(100vh-113px)] overflow-scroll bg-slate-200 pb-10 sm:h-[calc(100vh-81px)]"
+        >
+          <div className="mx-auto mt-8 flex flex-col bg-stone-50 p-4 text-slate-700 lg:max-w-5xl">
+            <div className="flex flex-col gap-8">
+              <Filters selectedFilters={selectedFilters} />
+              <Items
+                items={items}
+                fetcherLoading={fetcherLoading}
+                fetchingMore={fetchingMore}
+                totalItemsCount={totalItemsCount}
+                selectedFilters={selectedFilters}
+                remoteOnly={remoteOnly}
+                sortOrder={sortOrder}
+                searchText={searchText}
+              />
+            </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </ItemsFiltersDispatch.Provider>
   );
 }
+
+export { ItemsFiltersDispatch };

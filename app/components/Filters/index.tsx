@@ -1,19 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useFetcher } from "@remix-run/react";
 import Filter from "./Filter";
 import Cancel from "./Icons/Cancel";
 import { useMediaQuery } from "react-responsive";
+import { ItemsFiltersDispatch } from "~/routes";
 
 interface FiltersProps {
-  selectFilters: (slugs: string[]) => void;
   selectedFilters: string[];
 }
 
-export default function Filters({
-  selectFilters,
-  selectedFilters,
-}: FiltersProps) {
+export default function Filters({ selectedFilters }: FiltersProps) {
   const fetcher = useFetcher();
+  const { filterItems } = useContext(ItemsFiltersDispatch);
   const isSmAndUp = useMediaQuery({ query: "(min-width: 640px)" });
 
   useEffect(() => {
@@ -23,14 +21,19 @@ export default function Filters({
   const isSelected = (slug: string) => selectedFilters.includes(slug);
 
   const toggleFilter = (slug: string) => {
-    const updatedFilters = isSelected(slug)
+    const updated = isSelected(slug)
       ? selectedFilters.filter((x: string) => x !== slug)
       : [...selectedFilters, slug];
-    selectFilters(updatedFilters);
+    dispatchFilters(updated);
   };
 
   const resetFilters = () => {
-    selectFilters([]);
+    dispatchFilters([]);
+  };
+
+  const dispatchFilters = (filters: string[]) => {
+    const payload = { name: "selectedFilters", value: filters };
+    return filterItems({ type: "change", payload });
   };
 
   const { tags: filters = [] } = fetcher.data || {};

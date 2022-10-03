@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ChevronUp from "./Icons/ChevronUp";
 import type { Story } from "~/models/story.server";
+import { ItemsFiltersDispatch } from "~/routes";
 
 interface StorySelectProps {
   stories: Story[];
   story: Story;
-  onSelectStory: (story: Story) => void;
 }
 
 const storyTitle = (createdAt: Date) => {
@@ -16,11 +16,9 @@ const storyTitle = (createdAt: Date) => {
   });
 };
 
-export default function StorySelect({
-  stories,
-  story,
-  onSelectStory,
-}: StorySelectProps) {
+export default function StorySelect({ stories, story }: StorySelectProps) {
+  const { filterItems } = useContext(ItemsFiltersDispatch);
+
   const [showDropdown, setShowDropdown] = useState(false);
   const toggleDropdown = () => setShowDropdown((prev) => !prev);
 
@@ -29,6 +27,11 @@ export default function StorySelect({
   const chevronClass = `h-4 w-4 stroke-gray-700 stroke-1 ${
     showDropdown ? "transition rotate-180" : ""
   }`;
+
+  const selectStory = (story: Story) => {
+    const payload = { name: "story", value: story };
+    return filterItems({ type: "change", payload });
+  };
 
   return (
     <div onClick={toggleDropdown} className=" relative z-50 cursor-pointer">
@@ -44,7 +47,7 @@ export default function StorySelect({
           <ul>
             {selectable.map((story) => (
               <li
-                onClick={() => onSelectStory(story)}
+                onClick={() => selectStory(story)}
                 key={story.id}
                 className="p-2 text-right font-nunito text-sm text-gray-700 hover:bg-gray-100"
               >

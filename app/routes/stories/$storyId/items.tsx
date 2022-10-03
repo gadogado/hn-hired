@@ -19,14 +19,15 @@ export const loader: LoaderFunction = async ({ params, request }) => {
   const sort = url.searchParams.get("sort") as SortOrder;
   const cursorId = url.searchParams.get("cursorId");
 
-  const [storyItemsCount, storyItems] = await getItems({
+  const itemsRequest = {
     storyId: Number(params.storyId),
     ...(search && { search }),
     ...(filters && { filters }),
     ...(sort && { sort }),
     ...(remoteOnly && { remote: remoteOnly === "true" }),
     ...(cursorId && { cursorId }),
-  });
+  };
+  const [storyItemsCount, storyItems] = await getItems(itemsRequest);
 
   return json<LoaderData>({ storyItems, storyItemsCount });
 };
