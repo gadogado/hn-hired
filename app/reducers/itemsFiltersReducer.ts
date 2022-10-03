@@ -49,7 +49,8 @@ export const itemsFiltersReducer = (
 ) => {
   const withFetcher = (newValues: ItemsFilters) => {
     const fetcherUrl = buildFetcherUrl({ ...newValues, prevFilters: state });
-    return { ...newValues, fetcherUrl, prevFilters: state };
+    const cursor = state.cursor !== newValues.cursor ? newValues.cursor : null;
+    return { ...newValues, cursor, fetcherUrl, prevFilters: state };
   };
 
   switch (type) {
