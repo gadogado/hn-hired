@@ -91,8 +91,9 @@ export default function Index() {
     });
 
   const fetcherNotIdle = itemsFetcher?.state !== "idle";
-  const fetcherLoading = fetcherNotIdle && !cursor;
   const fetchingMore = fetcherNotIdle && !!cursor;
+  const fetcherLoading =
+    fetcherNotIdle && !cursor && !(items.length >= totalItemsCount);
 
   /* 
     Effects
