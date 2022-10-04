@@ -1,17 +1,17 @@
-import { useEffect, useContext } from "react";
 import { useFetcher } from "@remix-run/react";
+import { useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import Filter from "./Filter";
 import Cancel from "./Icons/Cancel";
-import { useMediaQuery } from "react-responsive";
-import { ItemsFiltersDispatch } from "~/routes";
+
+type FilterList = Array<string>;
 
 interface FiltersProps {
-  selectedFilters: string[];
+  selectedFilters: FilterList;
 }
 
 export default function Filters({ selectedFilters }: FiltersProps) {
   const fetcher = useFetcher();
-  const { filterItems } = useContext(ItemsFiltersDispatch);
   const isSmAndUp = useMediaQuery({ query: "(min-width: 640px)" });
 
   useEffect(() => {
@@ -25,15 +25,6 @@ export default function Filters({ selectedFilters }: FiltersProps) {
       ? selectedFilters.filter((x: string) => x !== slug)
       : [...selectedFilters, slug];
     dispatchFilters(updated);
-  };
-
-  const resetFilters = () => {
-    dispatchFilters([]);
-  };
-
-  const dispatchFilters = (filters: string[]) => {
-    const payload = { name: "selectedFilters", value: filters };
-    return filterItems({ type: "change", payload });
   };
 
   const { tags: filters = [] } = fetcher.data || {};
@@ -51,7 +42,7 @@ export default function Filters({ selectedFilters }: FiltersProps) {
           {selectedFilters?.length ? (
             <button
               className="flex flex-row items-center justify-center gap-2 rounded-md bg-white px-2 text-sm drop-shadow-btn"
-              onClick={resetFilters}
+              type="reset"
             >
               <Cancel />
               <span>reset</span>

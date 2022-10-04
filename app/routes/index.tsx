@@ -1,47 +1,52 @@
-import { useState, useEffect, useReducer, createContext } from "react";
-import type { Dispatch } from "react";
-import type { LoaderFunction } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
-import { useFetcher } from "@remix-run/react";
-import { getLatestStories } from "~/models/story.server";
-import { getItems } from "~/models/item.server";
-import type { Story } from "~/models/story.server";
-import type { Item } from "~/models/item.server";
-import { SCROLLABLE_THRESHOLD } from "~/utils/constants";
+import { Form, useFetcher, useLoaderData, useSubmit } from "@remix-run/react";
 import isequal from "lodash.isequal";
 import omit from "lodash.omit";
+import type { Dispatch } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 import useScrollableRef from "use-scrollable-ref";
+import Filters from "~/components/Filters";
 import Header from "~/components/Header";
 import Items from "~/components/Items";
-import Filters from "~/components/Filters";
-import { itemsFiltersReducer } from "~/reducers/itemsFiltersReducer";
+import type { Item } from "~/models/item.server";
+import { getItems } from "~/models/item.server";
+import type { Story } from "~/models/story.server";
+import { getLatestStories } from "~/models/story.server";
 import type {
-  ItemsFilters,
   DispatchAction,
+  ItemsFilters
 } from "~/reducers/itemsFiltersReducer";
+import { itemsFiltersReducer } from "~/reducers/itemsFiltersReducer";
+import { SCROLLABLE_THRESHOLD } from "~/utils/constants";
 
 type LoaderData = {
   stories: Story[];
   initialItems: Partial<Item>[];
   initialItemsCount: number;
   initialStory: Story;
+  selectedFilters: Array<string>;
 };
 
 interface ItemsFiltersContext {
   filterItems: Dispatch<DispatchAction>;
 }
 
-export const loader: LoaderFunction = async () => {
+export const loader = async ({ request }: LoaderArgs) => {
   const stories = await getLatestStories();
   const initialStory = stories[0];
   const itemsQuery = await getItems({ storyId: initialStory?.id });
   const [initialItemsCount, initialItems] = itemsQuery;
+
+  const url = new URL(request.url);
+  const tags = url.searchParams.getAll("tag");
+
   return json<LoaderData>({
     stories,
     initialItems,
     initialStory,
     initialItemsCount,
+    selectedFilters: tags,
   });
 };
 
@@ -51,8 +56,8 @@ const ItemsFiltersDispatch = createContext<ItemsFiltersContext>({
 
 export default function Index() {
   const itemsFetcher = useFetcher();
-  const { initialStory, initialItems, initialItemsCount, stories } =
-    useLoaderData();
+  const data = useLoaderData<typeof loader>();
+  const { initialStory, initialItems, initialItemsCount, stories } = data;
 
   const [items, setItems] = useState(initialItems);
   const [totalItemsCount, setTotalItemsCount] =
@@ -63,7 +68,7 @@ export default function Index() {
     fetcherUrl: "",
     sortOrder: "desc",
     remoteOnly: false,
-    selectedFilters: [],
+    selectedFilters: data.selectedFilters,
     story: initialStory,
     cursor: null,
     prevFilters: null,
@@ -95,7 +100,7 @@ export default function Index() {
   const fetcherLoading =
     fetcherNotIdle && !cursor && !(items.length >= totalItemsCount);
 
-  /* 
+  /*
     Effects
   */
 
@@ -108,7 +113,7 @@ export default function Index() {
     if (fetcherLoading) return;
     if (itemsFetcher?.data) {
       const { storyItems, storyItemsCount } = itemsFetcher.data || {};
-      setItems((prevItems: Partial<Item>[]) => {
+      setItems((prevItems) => {
         const { cursor: prevCursor, ...prev } = prevFilters || {};
         const { cursor: currentCursor, ...current } = itemFilters || {};
 
@@ -146,7 +151,7 @@ export default function Index() {
       !scrollableBottomReached
     )
       return;
-    const cursor = String(items.at(-1).id);
+    const cursor = String(items.at(-1)!.id);
     const payload = { name: "cursor", value: cursor };
     filterItems({ type: "change", payload });
   }, [
@@ -163,6 +168,8 @@ export default function Index() {
     scrollableRef.current.scrollTop = 0;
   }, [searchText, story, scrollableRef]);
 
+  const submit = useSubmit();
+
   return (
     <ItemsFiltersDispatch.Provider value={{ filterItems }}>
       <div className="bg-slate-200">
@@ -173,7 +180,15 @@ export default function Index() {
         >
           <div className="mx-auto mt-8 flex flex-col bg-stone-50 p-4 text-slate-700 lg:max-w-5xl">
             <div className="flex flex-col gap-8">
-              <Filters selectedFilters={selectedFilters} />
+              <Form
+                method="get"
+                action="/"
+                onChange={(ev) => {
+                  submit(ev.currentTarget, { replace: true });
+                }}
+              >
+                <Filters selectedFilters={selectedFilters} />
+              </Form>
               <Items
                 items={items}
                 fetcherLoading={fetcherLoading}

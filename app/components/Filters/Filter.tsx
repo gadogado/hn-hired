@@ -5,17 +5,13 @@ interface FilterProps {
   isSelected: boolean;
   slug: string;
   position: number;
-  onToggleFilter: (slug: string) => void;
 }
 
 export default function Filter({
   isSelected = false,
   slug,
-  onToggleFilter,
   position,
 }: FilterProps) {
-  const toggleFilter = () => onToggleFilter(slug);
-
   /* cannot compose names dynamically with tailwind */
   const colors = [
     "bg-lime-100",
@@ -28,8 +24,7 @@ export default function Filter({
   const selectedColor = colors[(FILTERS_TAKE - position) % colors.length];
 
   return (
-    <button
-      onClick={toggleFilter}
+    <label
       className={clsx(
         "box-border flex flex-row items-center justify-center rounded border-[1px] py-1 px-1.5 transition-colors hover:cursor-pointer",
         isSelected
@@ -37,7 +32,13 @@ export default function Filter({
           : `border-transparent" bg-white font-normal tracking-[0.105px] opacity-70`
       )}
     >
-      {slug}
-    </button>
+      <input
+        type="checkbox"
+        name="tag"
+        value={slug}
+        defaultChecked={isSelected}
+      />
+      <span className="pl-1">{slug}</span>
+    </label>
   );
 }
