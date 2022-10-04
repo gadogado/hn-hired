@@ -10,7 +10,7 @@
 1. ```npm install```
 2. Create an .env file: ```cp .env.example .env```
 3. hn-hired uses the [Prisma](https://www.prisma.io/docs/concepts/database-connectors/postgresql) ORM with Postgres.  You'll need to create a new local db and update the `.env` value for `DATABASE_URL=` with the respective db url, e.g., `createdb hnhired && postgresql://postgres:postgres@localhost:5432/hnhired` `(postgresql://USER:PASSWORD@HOST:PORT/DATABASE)` 
-4.  run `npm run seed` to setup the database
+4.  run `npm run setup` to setup the database
 5.  When hn-hired grabs items from firebase it normalizes the item text and associates any preconfigured 'tags' that match the text.  You'll need to seed the database with these tags as well as generate the client and run migrations: ```npm run setup``` - if there's any issues locally w/ the migrations you might need to `npx prisma db push`
 6.  Build the app: ```npm run build```
 7.  Run the process that grabs, normalizes, and persists the ycombinator job post items and stories: ```npm run manual-get-latest``` NOTE:  You can optionally increase how effective the `Promise.all` is when fetching firebase items by changing (increase) the `.env` value `CONCURRENCY_LIMIT=`. This largely depends on the architecture of your local machine.  
