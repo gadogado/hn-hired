@@ -7,6 +7,7 @@ processes = []
 [env]
   PORT = "8080"
   CONCURRENCY_LIMIT = 10
+  PRIMARY_REGION = "lax"
 
 [deploy]
   release_command = "sh release.sh"
