@@ -2,6 +2,7 @@ import pkg from "@prisma/client";
 import { installGlobals } from "@remix-run/node";
 import pLimit from "p-limit";
 const { PrismaClient, Prisma } = pkg;
+const { FLY_REGION, PRIMARY_REGION } = process.env;
 
 const prisma = new PrismaClient();
 
@@ -36,8 +37,8 @@ interface ItemTextMatches {
 async function getLatestStoryAndItems() {
   installGlobals();
 
-  const flyRegion = process.env.FLY_REGION;
-  if (flyRegion && flyRegion !== "lax") return;
+  if (FLY_REGION !== PRIMARY_REGION)
+    throw new Error("No writes when replica is the target");
 
   const tags = await prisma.tag.findMany({ select: { slug: true } });
   if (!tags.length) throw new Error("Missing Tags.");
