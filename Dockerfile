@@ -6,7 +6,7 @@ ENV NODE_ENV production
 
 # Install prisma and overmind deps
 RUN apt-get update 
-RUN apt-get install -y openssl tmux procps vim git wget
+RUN apt-get install -y openssl tmux procps vim git wget postgresql-client
 RUN wget https://go.dev/dl/go1.19.1.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.19.1.linux-amd64.tar.gz
 
