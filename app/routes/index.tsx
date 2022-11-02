@@ -169,7 +169,7 @@ export default function Index() {
         <Header story={story} stories={stories} searchText={searchText} />
         <main
           ref={scrollableRef}
-          className="relative h-[calc(100vh-113px)] overflow-scroll bg-slate-200 pb-10 sm:h-[calc(100vh-81px)]"
+          className="relative bg-slate-200 pb-10"
         >
           <div className="mx-auto mt-8 flex flex-col bg-stone-50 p-4 text-slate-700 lg:max-w-5xl">
             <div className="flex flex-col gap-8">
