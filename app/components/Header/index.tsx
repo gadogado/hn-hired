@@ -11,7 +11,7 @@ interface HeaderProps {
 
 export default function Header({ searchText, story, stories }: HeaderProps) {
   return (
-    <header className="box-sizing border-b border-b-slate-300 bg-stone-50">
+    <header className="box-sizing sticky top-0 z-10 border-b border-b-slate-300 bg-stone-50">
       <div className="mx-auto flex h-28 max-w-5xl flex-col justify-between py-1 px-4 pb-3 sm:h-20 sm:flex-row sm:items-center sm:py-0 sm:pb-0">
         <div className="flex items-center justify-between sm:justify-start">
           <div className="mr-6 flex items-center">
