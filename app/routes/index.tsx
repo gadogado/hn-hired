@@ -165,10 +165,12 @@ export default function Index() {
 
   return (
     <ItemsFiltersDispatch.Provider value={{ filterItems }}>
-      <div className="bg-slate-200">
+      <div
+        ref={scrollableRef}
+        className="bg-slate-200 h-screen overflow-scroll"
+      >
         <Header story={story} stories={stories} searchText={searchText} />
         <main
-          ref={scrollableRef}
           className="relative bg-slate-200 pb-10"
         >
           <div className="mx-auto mt-8 flex flex-col bg-stone-50 p-4 text-slate-700 lg:max-w-5xl">
